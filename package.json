@@ -1,0 +1,25 @@
+{
+  "name": "delivery-control-demo",
+  "version": "1.0.0",
+  "description": "DevSecOps demo application using CloudBees Unify workflows",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alvarotoscano/delivery-control-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/alvarotoscano/delivery-control-demo/issues"
+  },
+  "homepage": "https://github.com/alvarotoscano/delivery-control-demo#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

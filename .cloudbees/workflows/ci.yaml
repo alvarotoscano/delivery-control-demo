@@ -1,0 +1,39 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: My workflow
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  build-test-security:
+    steps:
+      - name: Checkout source code
+        uses: cloudbees-io/checkout@v1
+
+      - name: Install dependencies
+        uses: docker://node:20-alpine
+        shell: sh
+        run: |
+          npm install
+
+      - name: Run dependency security audit
+        uses: docker://node:20-alpine
+        shell: sh
+        run: |
+          npm audit --audit-level=high
+
+      - name: Run application tests
+        uses: docker://node:20-alpine
+        shell: sh
+        run: |
+          npm test
+
+      - name: Simulate deployment to staging
+        uses: docker://node:20-alpine
+        shell: sh
+        run: |
+          echo "Deploying delivery-control-demo to staging..."
+          echo "Deployment completed successfully"

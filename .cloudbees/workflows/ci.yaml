@@ -30,10 +30,18 @@ jobs:
         shell: sh
         run: |
           npm test
+      
+      - name: Create deployable artifact
+        uses: docker://node:20-alpine
+        shell: sh
+        run: |
+          mkdir -p dist
+          tar -czf dist/delivery-control-demo-1.0.0.tar.gz server.js package.json package-lock.json test.js
+          echo "Artifact created: dist/delivery-control-demo-1.0.0.tar.gz"
 
       - name: Simulate deployment to staging
         uses: docker://node:20-alpine
         shell: sh
         run: |
-          echo "Deploying delivery-control-demo to staging..."
+          echo "Deploying artifact dist/delivery-control-demo-1.0.0.tar.gz to staging..."
           echo "Deployment completed successfully"
